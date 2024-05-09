@@ -49,3 +49,7 @@
     filter: brightness(0.75);
 }
 
+.text{
+    word-wrap: break-word;
+    width: 250px;
+}

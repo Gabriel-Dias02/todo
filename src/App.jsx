@@ -47,6 +47,13 @@ export function App(){
 
   }
 
+  function press(event){
+      if(event.key === 'Enter'){
+        handleAddTask();
+      }
+    
+  }
+
   function removeTask(id){
     const taskIndex = tasks.filter(item => item.id !== id)
     setTasks(taskIndex)
@@ -58,11 +65,11 @@ export function App(){
   
   return(
     <main className={styles.container}>
-      <h1 className={styles.title}>Todo App</h1>
+      <h1 className={styles.title}>Todo Today</h1>
 
       <div className={styles.inputGroup}>
-        <input className={inputClassName} ref={inputRef} type="text" placeholder="Digite sua tarefa"/>
-        <button className={styles.button}   onClick={handleAddTask}>Add</button>
+        <input className={inputClassName} ref={inputRef} onKeyDown={press} type="text" placeholder="Digite sua tarefa"/>
+        <button className={styles.button} onClick={handleAddTask}>Add</button>
         <button className={styles.buttonClean} onClick={removeAll}>Limpar</button>
       </div>
 
