@@ -36,14 +36,11 @@ export function App(){
   function taskCompleted(id){
     const taskIndex = tasks.findIndex(item => item.id == id)
 
-    if(taskIndex == -1){
-      return
+    if (taskIndex !== -1 && !tasks[taskIndex].isCompleted) {
+      const updatedTasks = [...tasks];
+      updatedTasks[taskIndex] = { ...updatedTasks[taskIndex], isCompleted: true };
+      setTasks(updatedTasks);
     }
-
-    const newTasks = [...tasks]
-    newTasks[taskIndex].isCompleted = true
-
-    setTasks(newTasks)
 
   }
 
@@ -65,7 +62,7 @@ export function App(){
   
   return(
     <main className={styles.container}>
-      <h1 className={styles.title}>Todo Today</h1>
+      <h1 className={styles.title}>Todo To</h1>
 
       <div className={styles.inputGroup}>
         <input className={inputClassName} ref={inputRef} onKeyDown={press} type="text" placeholder="Digite sua tarefa"/>
